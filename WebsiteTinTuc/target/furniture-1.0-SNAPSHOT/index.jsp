@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!doctype html>
@@ -31,103 +32,56 @@
             <div class="col-lg-5 col-md-12">
                 <div class="article">
                     <img class="article-thumbnail"
-                         src="https://preview.colorlib.com/theme/newspaper/img/bg-img/x16.jpg.pagespeed.ic._cog5EESqN.webp"
+                         src="${aTech.url_img}"
                          alt="">
-                    <h5 class="article-type">Politics</h5>
-                    <a class="article-title" href="">Financial news: A new company is born today at the stock
-                        market</a>
+                    <h5 class="article-type">${aTech.type_name}</h5>
+                    <a class="article-title" href="">${aTech.title}</a>
                     <h5 class="article-author">By
-                        <span>Christinne Williams</span>
+                        <span>${aTech.author_name}</span>
                     </h5>
                     <p class="article-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales
-                        placerat. Sed varius leo ac leo fermentum, eu cursus nunc maximus. Integer convallis nisi
-                        nibh, et ornare neque ullamcorper ac. Nam id congue lectus, a venenatis massa. Maecenas
-                        justo libero, vulputate vel nunc id, blandit feugiat sem.
+                        ${aTech.description}
                     </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-12">
                 <div class="business">
                     <a href=""> <img class="business-thumbnail"
-                                     src="https://preview.colorlib.com/theme/newspaper/img/bg-img/x16.jpg.pagespeed.ic._cog5EESqN.webp"
+                                     src="${aWorld.url_img}"
                                      alt=""></a>
-                    <a href=""><h5 class="business-type">Politics</h5></a>
+                    <a href=""><h5 class="business-type">${aWorld.type_name}</h5></a>
                     <p class="business-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales
-                        placerat. Sed varius leo ac leo fermentum, eu cursus nunc maximus. Integer convallis nisi
-                        nibh, et ornare neque ullamcorper ac. Nam id congue lectus, a venenatis massa. Maecenas
-                        justo libero, vulputate vel nunc id, blandit feugiat sem.
+                        ${aWorld.description}
                     </p>
                 </div>
                 <div class="business">
                     <a href=""> <img class="business-thumbnail"
-                                     src="https://preview.colorlib.com/theme/newspaper/img/bg-img/x16.jpg.pagespeed.ic._cog5EESqN.webp"
+                                     src="${aSport.url_img}"
                                      alt=""></a>
-                    <a href=""><h5 class="business-type">Politics</h5></a>
+                    <a href=""><h5 class="business-type">${aSport.type_name}</h5></a>
                     <p class="business-description">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu metus sit amet odio sodales
-                        placerat. Sed varius leo ac leo fermentum, eu cursus nunc maximus. Integer convallis nisi
-                        nibh, et ornare neque ullamcorper ac. Nam id congue lectus, a venenatis massa. Maecenas
-                        justo libero, vulputate vel nunc id, blandit feugiat sem.
+                        ${aSport.description}
                     </p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-12">
-                <div class="popular d-flex align-items-center">
-                    <img class="popular-thumbnail"
-                         src="https://preview.colorlib.com/theme/newspaper/img/bg-img/x16.jpg.pagespeed.ic._cog5EESqN.webp"
-                         alt="">
-                    <div class="d-flex flex-column">
-                        <h5 class="popular-type">Politics</h5>
-                        <a class="popular-title" href="">Financial news: A new company is born today at the stock
-                            market</a>
-                        <p class="popular-time">7:00 AM &verbar;
-                            <span class="popular-date">April 14</span>
-                        </p>
+                <c:forEach var="aEducation" items="${listE}">
+                    <div class="popular d-flex align-items-center">
+                        <img class="popular-thumbnail"
+                             src="${aEducation.url_img}"
+                             alt="">
+                        <div class="d-flex flex-column">
+                            <h5 class="popular-type">${aEducation.type_name}</h5>
+                            <a class="popular-title" href="">${aEducation.title}</a>
+                            <p class="popular-time">${aEducation.create_date}
+<%--                                &verbar;--%>
+<%--                             <span class="popular-date">April 14</span>--%>
+                            </p>
+                        </div>
                     </div>
-                </div>
+                </c:forEach>
 
-                <div class="popular d-flex align-items-center">
-                    <img class="popular-thumbnail"
-                         src="https://preview.colorlib.com/theme/newspaper/img/bg-img/x16.jpg.pagespeed.ic._cog5EESqN.webp"
-                         alt="">
-                    <div class="d-flex flex-column">
-                        <a href=""><h5 class="popular-type">Travel</h5></a>
-                        <a class="popular-title" href="">Financial news: A new company is born today at the stock
-                            market</a>
-                        <p class="popular-time">7:00 AM &verbar;
-                            <span class="popular-date">April 14</span>
-                        </p>
-                    </div>
-                </div>
 
-                <div class="popular d-flex align-items-center">
-                    <img class="popular-thumbnail"
-                         src="https://preview.colorlib.com/theme/newspaper/img/bg-img/x16.jpg.pagespeed.ic._cog5EESqN.webp"
-                         alt="">
-                    <div class="d-flex flex-column">
-                        <a href=""><h5 class="popular-type">Business</h5></a>
-                        <a class="popular-title" href="">Financial news: A new company is born today at the stock
-                            market</a>
-                        <p class="popular-time">7:00 AM &verbar;
-                            <span class="popular-date">April 14</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="popular d-flex align-items-center">
-                    <img class="popular-thumbnail"
-                         src="https://preview.colorlib.com/theme/newspaper/img/bg-img/x16.jpg.pagespeed.ic._cog5EESqN.webp"
-                         alt="">
-                    <div class="d-flex flex-column">
-                        <a href=""><h5 class="popular-type">Sport</h5></a>
-                        <a class="popular-title" href="">Financial news: A new company is born today at the stock
-                            market</a>
-                        <p class="popular-time">7:00 AM &verbar;
-                            <span class="popular-date">April 14</span>
-                        </p>
-                    </div>
-                </div>
             </div>
 
         </div>
