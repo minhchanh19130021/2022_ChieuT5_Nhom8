@@ -1,6 +1,6 @@
 package controller;
 
-import dao.HomeDAO;
+import dao.ArticleDAO;
 import entity.Article;
 import entity.Type;
 
@@ -10,18 +10,18 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet(name = "HomeController", value = "")
+@WebServlet(name = "HomeController", value = "/Home")
 public class HomeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        HomeDAO homeDAO = new HomeDAO();
-        Article aTech = homeDAO.getArticleTechnology();
-        Article aWorld = homeDAO.getArticleWorld();
-        Article aSport = homeDAO.getArticleSport();
-        List<Article> listE = homeDAO.getArticleEducation();
-        List<Type> listT = homeDAO.getTypes();
+        ArticleDAO articleDAO = new ArticleDAO();
+        Article aTech = articleDAO.getArticleTechnology();
+        Article aWorld = articleDAO.getArticleWorld();
+        Article aSport = articleDAO.getArticleSport();
+        List<Article> listE = articleDAO.getArticleEducation();
+        List<Type> listT = articleDAO.getTypes();
 
         request.setAttribute("aTech", aTech);
         request.setAttribute("aWorld", aWorld);
