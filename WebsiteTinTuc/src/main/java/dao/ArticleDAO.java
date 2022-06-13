@@ -17,7 +17,12 @@ public class ArticleDAO {
 
     public Article getArticleTechnology() {
         Article aTech = null;
-        String query = "SELECT * FROM article WHERE type_name ='Cong Nghe' ORDER BY article.create_date DESC LIMIT 1";
+        String query = "\n" +
+                "SELECT article.id,article.title,article.description,article.content,article.url_img, `user`.last_name,type.`name`,article.create_date FROM article\n" +
+                "JOIN type ON type.id=article.type_id\n" +
+                "JOIN `user` ON `user`.id=article.author_id\n" +
+                "JOIN decentralization ON decentralization.user_id = `user`.id\n" +
+                "WHERE type.`name` = 'Cong Nghe' LIMIT 1";
 
         try {
             connection = new DBContext().getConnection();
@@ -43,7 +48,11 @@ public class ArticleDAO {
 
     public Article getArticleWorld() {
         Article aWorld = null;
-        String query = "SELECT * FROM article WHERE type_name ='The Gioi' ORDER BY article.create_date DESC LIMIT 1";
+        String query = "SELECT article.id,article.title,article.description,article.content,article.url_img, `user`.last_name,type.`name`,article.create_date FROM article\n" +
+                "JOIN type ON type.id=article.type_id\n" +
+                "JOIN `user` ON `user`.id=article.author_id\n" +
+                "JOIN decentralization ON decentralization.user_id = `user`.id\n" +
+                "WHERE type.`name` = 'The Gioi' LIMIT 1";
 
         try {
             connection = new DBContext().getConnection();
@@ -69,7 +78,11 @@ public class ArticleDAO {
 
     public Article getArticleSport() {
         Article aSport = null;
-        String query = "SELECT * FROM article WHERE type_name ='The Thao' ORDER BY article.create_date DESC LIMIT 1";
+        String query = "SELECT article.id,article.title,article.description,article.content,article.url_img, `user`.last_name,type.`name`,article.create_date FROM article\n" +
+                "JOIN type ON type.id=article.type_id\n" +
+                "JOIN `user` ON `user`.id=article.author_id\n" +
+                "JOIN decentralization ON decentralization.user_id = `user`.id\n" +
+                "WHERE type.`name` = 'The Thao' LIMIT 1";
 
         try {
             connection = new DBContext().getConnection();
@@ -95,7 +108,11 @@ public class ArticleDAO {
 
     public List<Article> getArticleEducation() {
         List<Article> listE = new ArrayList<Article>();
-        String query = "SELECT * FROM article WHERE type_name ='Giao Duc' ";
+        String query = "SELECT article.id,article.title,article.description,article.content,article.url_img, `user`.last_name,type.`name`,article.create_date FROM article\n" +
+                "JOIN type ON type.id=article.type_id\n" +
+                "JOIN `user` ON `user`.id=article.author_id\n" +
+                "JOIN decentralization ON decentralization.user_id = `user`.id\n" +
+                "WHERE type.`name` = 'Giao Duc'";
 
         try {
             connection = new DBContext().getConnection();
@@ -120,7 +137,11 @@ public class ArticleDAO {
     }
     public List<Article> getArticleBusiness() {
         List<Article> listB = new ArrayList<Article>();
-        String query = "SELECT * FROM article WHERE type_name ='Kinh Doanh' ";
+        String query = "SELECT article.id,article.title,article.description,article.content,article.url_img, `user`.last_name,type.`name`,article.create_date FROM article\n" +
+                "JOIN type ON type.id=article.type_id\n" +
+                "JOIN `user` ON `user`.id=article.author_id\n" +
+                "JOIN decentralization ON decentralization.user_id = `user`.id\n" +
+                "WHERE type.`name` = 'Kinh Doanh'";
 
         try {
             connection = new DBContext().getConnection();
@@ -168,7 +189,11 @@ public class ArticleDAO {
 
     public List<Article> searchByTitle(String txtTitle) {
         List<Article> listS = new ArrayList<Article>();
-        String query = "SELECT * FROM article WHERE title LIKE ?";
+        String query = "SELECT article.id,article.title,article.description,article.content,article.url_img, `user`.last_name,type.`name`,article.create_date FROM article\n" +
+                "JOIN type ON type.id=article.type_id\n" +
+                "JOIN `user` ON `user`.id=article.author_id\n" +
+                "JOIN decentralization ON decentralization.user_id = `user`.id\n" +
+                "WHERE article.title LIKE ?";
 
         try {
             connection = new DBContext().getConnection();
@@ -195,9 +220,9 @@ public class ArticleDAO {
 
     public static void main(String[] args) {
         ArticleDAO articleDAO = new ArticleDAO();
-        List<Article> listT = articleDAO.searchByTitle("2");
-        for (Article t : listT) {
-            System.out.println(t);
+        List<Article> listA =articleDAO.searchByTitle("tesla");
+        for(Article article : listA){
+            System.out.println(article);
         }
     }
 }
