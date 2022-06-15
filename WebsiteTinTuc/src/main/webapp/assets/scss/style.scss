@@ -216,8 +216,9 @@ a {
 .search {
 
   &-thumbnail {
-    width: 100%;
-    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    object-position: center;
   }
 
   &-type {
@@ -256,6 +257,12 @@ a {
     color: #828492
   }
 }
-.search-heading{
+
+.search-heading {
   padding: 10px 0;
+}
+
+img {
+  object-position: center;
+  object-fit: cover;
 }
