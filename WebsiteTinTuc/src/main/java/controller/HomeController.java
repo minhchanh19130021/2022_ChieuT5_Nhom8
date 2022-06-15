@@ -22,7 +22,7 @@ public class HomeController extends HttpServlet {
         Article aSport = articleDAO.getArticleSport();
         List<Article> listE = articleDAO.getArticleEducation();
         List<Type> listT = articleDAO.getTypes();
-//
+
         request.setAttribute("aTech", aTech);
         request.setAttribute("aWorld", aWorld);
         request.setAttribute("aSport", aSport);
