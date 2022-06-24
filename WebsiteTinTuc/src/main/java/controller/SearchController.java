@@ -15,6 +15,7 @@ public class SearchController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
+
         String txtTitle = request.getParameter("txtTitle");
         ArticleDAO articleDAO = new ArticleDAO();
         List<Article> listS = articleDAO.searchByTitle(txtTitle);
@@ -24,7 +25,7 @@ public class SearchController extends HttpServlet {
         request.setAttribute("listS", listS);
         request.setAttribute("listB", listB);
 
-        request.getRequestDispatcher("search.jsp").forward(request, response);
+        request.getRequestDispatcher("SearchPage.jsp").forward(request, response);
     }
 
     @Override
