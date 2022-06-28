@@ -12,7 +12,7 @@
             <div class="col-lg-6 d-flex justify-content-between">
                 <div class="">
                     <a class="header-login" href="">Đăng Nhập</a>
-                    <a class="header-register" href="/SignUp">Đăng Ký</a>
+                    <a class="header-register" href="../sign_up.jsp">Đăng Ký</a>
                 </div>
                 <div class=" ">
                     <form id="formSearch" method="post" action="/Search">
