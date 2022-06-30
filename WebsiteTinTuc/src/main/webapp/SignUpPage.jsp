@@ -10,7 +10,7 @@
     <h1>Đăng ký tài khoản</h1>
     <div class="main-agileinfo">
         <div class="agileits-top">
-            <form action="SignUp" method="post">
+            <form action="SignUpPage" method="post">
                 <p class="text-danger">${mess}</p>
                 <input class="text" type="text" name="user_name" placeholder="Tài khoản" required="">
                 <input class="text w3lpass" type="password" name="pass" placeholder="Mật khẩu" required="">

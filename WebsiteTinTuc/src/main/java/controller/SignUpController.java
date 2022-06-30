@@ -7,7 +7,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "SignUpController", value = "/SignUp")
+@WebServlet(name = "SignUpController", value = "/SignUpPage")
 public class SignUpController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,7 +39,7 @@ public class SignUpController extends HttpServlet {
 //                request.getRequestDispatcher("SignUpPage.jsp").forward(request, response);
                 dao.signup(user_name,pass,first_name,last_name,phone,email);
                 dao.decentralization(user_name);
-                request.getRequestDispatcher("HomePageHomePage.jsp").forward(request, response);
+                request.getRequestDispatcher("HomePage.jsp").forward(request, response);
             }
         }
     }
