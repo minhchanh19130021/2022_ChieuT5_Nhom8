@@ -2,51 +2,42 @@ package entity;
 
 import java.util.Date;
 public class Decentralization {
-    private int id;
-    private String name;
-    private String user_id;
+    private static String name;
+    private static String user_id;
     private int isAdmin;
     private Date create_date;
 
     public Decentralization() {
     }
 
-    public Decentralization(int id, String name,String user_id, int isAdmin, Date create_date) {
-        this.id = id;
+    public Decentralization(String name,String user_id, int isAdmin, Date create_date) {
         this.name = name;
         this.user_id=user_id;
         this.isAdmin = isAdmin;
         this.create_date = create_date;
     }
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return this.name;
+    public static String getName() {
+        return name;
     }
 
     public void setName(String name) {
-        this.name = User.getUser_name();
+        this.name=name;
     }
 
-    public String getUser_id() {
-        return this.user_id;
+    public static String getUser_id() {
+        return user_id;
     }
 
     public void setUser_id(String user_id) {
-        this.user_id = User.getId();
+        this.user_id =user_id;
     }
 
     public int isAdmin() {
         return  this.isAdmin;
     }
 
-    public void setUser_id(int isAdmin) {
+    public void setisAdmin(int isAdmin) {
         this.isAdmin = isAdmin;
     }
 
@@ -61,7 +52,6 @@ public class Decentralization {
     @Override
     public String toString() {
         return "User{" +
-                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", user_id='" + user_id + '\'' +
                 ", isAdmin='" + isAdmin + '\'' +

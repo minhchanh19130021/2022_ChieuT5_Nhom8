@@ -1,6 +1,7 @@
 package dao;
 import context.DBContext;
 import entity.Article;
+import entity.Decentralization;
 import entity.User;
 
 import java.sql.Connection;
@@ -12,36 +13,46 @@ public class SignUpDAO {
     Connection connection = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
-    public User checkAccountExist(String user_name){
-        String query ="select * from user\n"
-                + "where user_name = ?\n";
+    public boolean checkAccountExist(String user_name){
+        String query ="select * from user where user_name = ?";
         try {
             connection = new DBContext().getConnection();
             ps = connection.prepareStatement(query);
             ps.setString(1,user_name);
             rs = ps.executeQuery();
             while(rs.next()){
-                return new User(rs.getString(1),
-                        rs.getString(2),
-                        rs.getString(3),
-                        rs.getString(4),
-                        rs.getString(5),
-                        rs.getString(6),
-                        rs.getString(7),
-                        rs.getDate(8));
+                return true;
+//                return new User(rs.getString(1),
+//                        rs.getString(2),
+//                        rs.getString(3),
+//                        rs.getString(4),
+//                        rs.getString(5),
+//                        rs.getString(6),
+//                        rs.getString(7),
+//                        rs.getDate(8));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+       return false;
     }
 
     public void signup(String user_name, String pass, String first_name, String last_name, String phone, String email){
-        String query ="insert into user\n"
-                + "values(id,?,?,?,?,?,?,current_date )";
+        int b= (int) (Math.random()*999999);
+        String a = user_name+"_"+b;
+        String query;
+        query = "insert into user(id\n" +
+                ",user_name,pass,first_name,last_name,phone,email,create_date) values(?,?,?,?,?,?,?,current_date )";
+//        String query ="insert into user(id,user_name,pass,first_name,last_name,phone,email,create_date) values ('"+a+"','"+user_name+"','"+pass+"','"+first_name+"','"+last_name+"','"+phone+"','"+email+"')";
+
+
+//                "insert into user(id\n" +
+//                ",user_name,pass,first_name,last_name,phone,email,create_date)\n"
+//                + "values(123,?,?,?,?,?,?,25/03/2001 )";
         try {
             connection = new DBContext().getConnection();
             ps = connection.prepareStatement(query);
+            ps.setString(1,a);
             ps.setString(2,user_name);
             ps.setString(3,pass);
             ps.setString(4,first_name);
@@ -53,21 +64,24 @@ public class SignUpDAO {
             e.printStackTrace();
         }
     }
-    public void decentralization(String name,String user_id){
-        String query ="insert into decentralization\n"
-                + "values(?,?,?,0,current_date )";
+    public void decentralization(String name){
+
+        String b = User.getId();
+        String query;
+        query="insert into decentralization(name,user_id,isAdmin,create_date)\n"
+                + "values(?,?,0,current_date )";
+
         try {
             connection = new DBContext().getConnection();
             ps = connection.prepareStatement(query);
-            ps.setString(2,name);
-            ps.setString(3,user_id);
-            rs = ps.executeQuery();
+            ps.setString(1,name);
+            ps.setString(2,b);
+            ps.executeUpdate();
         } catch (Exception e){
             e.printStackTrace();
         }
     }
     public static void main(String[] args) {
-        SignUpDAO signUpDAO = new SignUpDAO();
 
     }
 }

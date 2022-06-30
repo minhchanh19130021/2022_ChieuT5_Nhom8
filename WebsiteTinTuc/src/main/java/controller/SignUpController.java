@@ -23,17 +23,23 @@ public class SignUpController extends HttpServlet {
 
         if(!pass.equals(re_pass)){
             request.setAttribute("mess","Mật khẩu không khớp");
-            request.getRequestDispatcher("sign_up.jsp").forward(request, response);
+            request.getRequestDispatcher("SignUpPage.jsp").forward(request, response);
         } else {
             SignUpDAO dao = new SignUpDAO();
-            User a = dao.checkAccountExist(user_name);
-            if(a==null){
-                dao.signup(user_name,pass,first_name,last_name,phone,email);
-                dao.decentralization(user_name, request.getRequestedSessionId());
-                response.sendRedirect("/Home");
-            }else{
+//            User a = dao.checkAccountExist(user_name);
+            if(dao.checkAccountExist(user_name)==true){
                 request.setAttribute("mess","Tài khoản đã tồn tại");
-                request.getRequestDispatcher("sign_up.jsp").forward(request, response);
+                request.getRequestDispatcher("SignUpPage.jsp").forward(request, response);
+//                dao.signup(user_name,pass,first_name,last_name,phone,email);
+////                dao.decentralization();
+//                request.getRequestDispatcher("HomePage.jsp").forward(request, response);
+//                response.sendRedirect("HomePage.jsp");
+            }else{
+//                request.setAttribute("mess","Tài khoản đã tồn tại");
+//                request.getRequestDispatcher("SignUpPage.jsp").forward(request, response);
+                dao.signup(user_name,pass,first_name,last_name,phone,email);
+                dao.decentralization(user_name);
+                request.getRequestDispatcher("HomePageHomePage.jsp").forward(request, response);
             }
         }
     }

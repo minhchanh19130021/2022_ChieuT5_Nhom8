@@ -24,7 +24,7 @@ public class SearchController extends HttpServlet {
         request.setAttribute("listS", listS);
         request.setAttribute("listB", listB);
 
-        request.getRequestDispatcher("search.jsp").forward(request, response);
+        request.getRequestDispatcher("SearchPageSearchPage.jsp").forward(request, response);
     }
 
     @Override

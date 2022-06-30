@@ -28,7 +28,7 @@ public class HomeController extends HttpServlet {
         request.setAttribute("aSport", aSport);
         request.setAttribute("listE", listE);
         request.setAttribute("listT", listT);
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("HomePageHomePage.jsp").forward(request, response);
     }
 
     @Override

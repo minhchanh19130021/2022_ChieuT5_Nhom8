@@ -27,9 +27,7 @@ public class User {
     }
 
     public static String getId() {
-        int a= (int) (Math.random()*999999);
-
-        return getUser_name()+'_'+a;
+        return id;
     }
 
     public void setId(String id) {
