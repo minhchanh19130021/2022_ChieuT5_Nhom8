@@ -15,7 +15,7 @@
                     <a class="header-register" href="SignUpPage.jsp">Đăng Ký</a>
                 </div>
                 <div class=" ">
-                    <form id="formSearch" method="post" action="/Search">
+                    <form id="formSearch" method="post" action="/SearchPage">
                         <input type="search" name="txtTitle" placeholder="Search">
                         <button class="btn-search" type="submit">
                             <i class="fa-solid fa-magnifying-glass"></i>
