@@ -38,8 +38,7 @@ public class SignUpDAO {
     }
 
     public void signup(String user_name, String pass, String first_name, String last_name, String phone, String email){
-        int b= (int) (Math.random()*999999);
-        String a = user_name+"_"+b;
+        String a = user_name;
         String query;
         query = "insert into user(id\n" +
                 ",user_name,pass,first_name,last_name,phone,email,create_date) values(?,?,?,?,?,?,?,current_date )";
@@ -64,9 +63,8 @@ public class SignUpDAO {
             e.printStackTrace();
         }
     }
-    public void decentralization(String name){
+    public void decentralization(String user_name){
 
-        String b = User.getId();
         String query;
         query="insert into decentralization(name,user_id,isAdmin,create_date)\n"
                 + "values(?,?,0,current_date )";
@@ -74,8 +72,8 @@ public class SignUpDAO {
         try {
             connection = new DBContext().getConnection();
             ps = connection.prepareStatement(query);
-            ps.setString(1,name);
-            ps.setString(2,b);
+            ps.setString(1,user_name);
+            ps.setString(2,user_name);
             ps.executeUpdate();
         } catch (Exception e){
             e.printStackTrace();
